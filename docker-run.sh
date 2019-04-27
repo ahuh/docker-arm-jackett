@@ -64,25 +64,25 @@ fi
 # ------------------------------------------------------
 # Common commands
 
-# if [[ $(docker ps -f name=${CONTAINER_NAME} -f status=running | grep ${CONTAINER_NAME} | wc -l) != 0 ]] ; then
-# 	# Container already running: stop it
-# 	echo "Stop running container: ${CONTAINER_NAME}"
-# 	docker stop ${CONTAINER_NAME}
-# 	RESULT=$?
-# 	if [[ ${RESULT} != 0 ]] ; then
-# 		exit 1
-# 	fi
-# fi
+if [[ $(docker ps -f name=${CONTAINER_NAME} -f status=running | grep ${CONTAINER_NAME} | wc -l) != 0 ]] ; then
+	# Container already running: stop it
+	echo "Stop running container: ${CONTAINER_NAME}"
+	docker stop ${CONTAINER_NAME}
+	RESULT=$?
+	if [[ ${RESULT} != 0 ]] ; then
+		exit 1
+	fi
+fi
 
-# if [[ $(docker ps -a -f name=${CONTAINER_NAME} | grep ${CONTAINER_NAME} | wc -l) != 0 ]] ; then
-# 	# Container already exists: remove it
-# 	echo "Remove existing container: ${CONTAINER_NAME}"
-# 	docker rm ${CONTAINER_NAME}
-# 	RESULT=$?
-# 	if [[ ${RESULT} != 0 ]] ; then
-# 		exit 1
-# 	fi
-# fi
+if [[ $(docker ps -a -f name=${CONTAINER_NAME} | grep ${CONTAINER_NAME} | wc -l) != 0 ]] ; then
+	# Container already exists: remove it
+	echo "Remove existing container: ${CONTAINER_NAME}"
+	docker rm ${CONTAINER_NAME}
+	RESULT=$?
+	if [[ ${RESULT} != 0 ]] ; then
+		exit 1
+	fi
+fi
 
 # ------------------------------------------------------
 # Custom commands
