@@ -2,7 +2,6 @@
 #
 # Version 1.0
 
-#FROM resin/rpi-raspbian:jessie
 FROM balenalib/rpi-raspbian:buster
 LABEL maintainer "ahuh"
 
@@ -18,17 +17,8 @@ ENV AUTO_UPDATE=\
 # Set xterm for nano
 ENV TERM xterm
 
-# Remove previous apt repos
-# RUN rm -rf /etc/apt/preferences.d* \
-# 	&& mkdir /etc/apt/preferences.d \
-# 	&& rm -rf /etc/apt/sources.list* \
-# 	&& mkdir /etc/apt/sources.list.d
-
 # Copy custom bashrc to root (ll aliases)
 COPY root/ /root/
-# Copy apt config for jessie (stable) and stretch (testing) repos
-# COPY preferences.d/ /etc/apt/preferences.d/
-# COPY sources.list.d/ /etc/apt/sources.list.d/
 
 # Update packages and install software
 RUN apt-get update \
