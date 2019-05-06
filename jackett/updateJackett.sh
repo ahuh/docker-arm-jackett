@@ -15,8 +15,8 @@ if [ "${AUTO_UPDATE}" = true ] && [ ! -e "${JACKETT_UPDATED_FILE}" ] ; then
 		
 		rm -rf /opt/jackett
 		mkdir -p /opt/jackett
-		curl -k -o /tmp/jacket.tar.gz -L https://github.com/Jackett/Jackett/releases/download/$JACKETT_VERSION_NEW/Jackett.Binaries.Mono.tar.gz
-		tar xf /tmp/jacket.tar.gz -C /opt/Jackett --strip-components=1
+		curl -k -o /tmp/jackett.tar.gz -L https://github.com/Jackett/Jackett/releases/download/$JACKETT_VERSION_NEW/Jackett.Binaries.Mono.tar.gz
+		tar xf /tmp/jackett.tar.gz -C /opt/jackett --strip-components=1
 		
 		export JACKETT_VERSION_NEW
 	else
